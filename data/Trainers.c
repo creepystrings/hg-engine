@@ -31160,12 +31160,12 @@ const TrainerData sTrainerData[] = {
         },
     },
 
-    // Insane twin of trainer 2 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    // Insane twin of trainer 496 (rival ambush, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
     [738] = {
-        .name = "Silver",
+        .name = "Boy",
         .data = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
-            .trainerClass = TRAINERCLASS_RIVAL,
+            .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
             .aiFlags = F_TRAINER_EXPERT_AI,
             .battleType = SINGLE_BATTLE,
@@ -31186,12 +31186,12 @@ const TrainerData sTrainerData[] = {
         },
     },
 
-    // Insane twin of trainer 3 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    // Insane twin of trainer 497 (rival ambush, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
     [739] = {
-        .name = "Silver",
+        .name = "Boy",
         .data = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
-            .trainerClass = TRAINERCLASS_RIVAL,
+            .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
             .aiFlags = F_TRAINER_EXPERT_AI,
             .battleType = SINGLE_BATTLE,
@@ -31212,12 +31212,12 @@ const TrainerData sTrainerData[] = {
         },
     },
 
-    // Insane twin of trainer 265 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    // Insane twin of trainer 495 (rival ambush, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
     [740] = {
-        .name = "Silver",
+        .name = "Boy",
         .data = {
             .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
-            .trainerClass = TRAINERCLASS_RIVAL,
+            .trainerClass = TRAINERCLASS_PASSERBY,
             .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
             .aiFlags = F_TRAINER_EXPERT_AI,
             .battleType = SINGLE_BATTLE,

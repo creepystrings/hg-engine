@@ -39,9 +39,9 @@ void LONG_CALL *Encounter_New(struct BattleSetup *setup, s32 effect, s32 bgm, u3
 // The twin's header (class, items, AI flags, data layout) and party replace the normal one when the player
 // picked Insane; the normal trainer's name and text are kept, so twins need no trainer text of their own.
 static const u16 sInsaneTrainerTable[][2] = {
-    { 2, 738 },   // Silver, Cherrygrove City (player picked Chikorita, Silver has Cyndaquil)
-    { 3, 739 },   // Silver, Cherrygrove City (player picked Cyndaquil, Silver has Totodile)
-    { 265, 740 }, // Silver, Cherrygrove City (player picked Totodile, Silver has Chikorita)
+    { 495, 740 }, // rival ambush, Cherrygrove City (player picked Totodile, rival has Chikorita)
+    { 496, 738 }, // rival ambush, Cherrygrove City (player picked Chikorita, rival has Cyndaquil)
+    { 497, 739 }, // rival ambush, Cherrygrove City (player picked Cyndaquil, rival has Totodile)
 };
 
 /**
