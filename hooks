@@ -662,3 +662,8 @@ arm9 EncounterSlot_WildMonSlotRoll_Headbutt 022477C0 0
 0012 PlayerTrainerVictoryBGM_hook 0224DA9E 3
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
+
+#ifdef DIFFICULTY_VARIABLE
+# battle style getter: Insane always uses Set (src/difficulty.c). do not combine with BATTLE_MODE_FORCE_SET, which patches the same routine
+arm9 Options_GetBattleStyle_Difficulty 0202AD90 1
+#endif

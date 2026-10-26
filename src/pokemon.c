@@ -1729,6 +1729,12 @@ u32 LONG_CALL GetLevelCap(void)
 #else
 #ifdef IMPLEMENT_LEVEL_CAP
     u32 levelCap = GetScriptVar(LEVEL_CAP_VARIABLE);
+#ifdef DIFFICULTY_VARIABLE
+    // a cap set by a script takes priority; otherwise Insane caps by badge count and Normal has no cap
+    if (levelCap == 0) {
+        levelCap = GetDifficultyLevelCap();
+    }
+#endif // DIFFICULTY_VARIABLE
     if (levelCap > 100 || levelCap == 0) {
         levelCap = 100;
     }

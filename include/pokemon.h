@@ -1761,6 +1761,10 @@ void LONG_CALL ClearMonMoves(struct PartyPokemon *pokemon);
  */
 u32 LONG_CALL GetLevelCap(void);
 
+// difficulty rules (src/difficulty.c)
+BOOL LONG_CALL IsInsaneDifficulty(void);
+u32 LONG_CALL GetDifficultyLevelCap(void);
+
 /**
  *  @brief check if the level is at or above the level cap defined in LEVEL_CAP_VARIABLE
  *
