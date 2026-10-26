@@ -381,6 +381,9 @@
 .equ VAR_UNK_416E, 0x416E
 .equ VAR_UNK_416F, 0x416F
 
+// Pokémon Monsoon: 0 = Normal, 1 = Insane (chosen at the start of the game)
+.equ VAR_DIFFICULTY, 0x416E
+
 .equ NUM_VARS, (0x170)
 
 .equ SPECIAL_VAR_BASE, 0x8000

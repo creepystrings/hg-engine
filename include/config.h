@@ -88,6 +88,9 @@
 // uncommenting ALLOW_LEVEL_CAP_EVOLVE will allow for rare candies to evolve pokemon already at the level cap that can evolve at that level already
 // #define IMPLEMENT_LEVEL_CAP
 // #define LEVEL_CAP_VARIABLE 0x416F
+
+// DIFFICULTY_VARIABLE holds the difficulty picked at the start of the game: 0 = Normal, 1 = Insane
+#define DIFFICULTY_VARIABLE 0x416E
 // #define UNCAP_CANDIES_FROM_LEVEL_CAP
 // #define ALLOW_LEVEL_CAP_EVOLVE
 
@@ -278,6 +281,6 @@
 // DSPRE, PokeText, or any other external tool keeps its own version of everything hg-engine does not itself change.
 // hg-engine's own text archives and its common and trainer scripts are always built.
 // #define BUILD_DUMPED_EVENTDATA
-// #define BUILD_DUMPED_SCR_SEQ
+#define BUILD_DUMPED_SCR_SEQ
 
 #endif

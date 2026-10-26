@@ -37,3 +37,7 @@ The TV is playing a movie!\rTwo boys are in a cave searching\nfor treasure!\rI b
 Cinnabar Volcano Burger!\nMom’s specialty!
 A squeaky-clean sink!\nMom loves having it clean.
 What’s in the fridge...?\rLots of drinking water and\nsweeeet lemonade!
+Before your adventure begins,\nchoose your difficulty.\rNormal is the classic\nPokémon challenge.\rInsane has competitive teams,\nlevel caps and Set battles.\rThis can’t be changed later!\r
+Play on Insane difficulty?
+Insane difficulty selected.\nGood luck, Trainer!
+Normal difficulty selected.\nEnjoy your journey!

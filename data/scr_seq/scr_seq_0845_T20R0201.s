@@ -39,6 +39,20 @@ scrdef_end
 scr_seq_T20R0201_000:
 	scrcmd_609
 	lockall
+	npc_msg 39
+	npc_msg 40
+	yesno VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, 0
+	goto_if_ne _difficulty_normal
+	setvar VAR_DIFFICULTY, 1
+	npc_msg 41
+	goto _difficulty_done
+
+_difficulty_normal:
+	setvar VAR_DIFFICULTY, 0
+	npc_msg 42
+_difficulty_done:
+	closemsg
 	apply_movement obj_player, _00A4
 	apply_movement obj_T20R0201_gsmama, _00B0
 	wait_movement
