@@ -1321,6 +1321,7 @@ u8 ALIGN4 scratchpad[4] = { 0, 0, 0, 0 };
 #define monCount             scratchpad[0]
 #define monCountFromItem     scratchpad[1]
 #define trackPartyExperience scratchpad[2]
+#define originalExpRecipients scratchpad[3] // MODERN_EXP_SHARE: party slots that took part before everyone was made eligible
 
 /**
  *  @brief task to distribute experience
@@ -1340,6 +1341,26 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
     struct BattleStruct *sp = expcalc->sp;
 
     client_no = (sp->fainting_client >> 1) & 1;
+
+#ifdef MODERN_EXP_SHARE
+    // modern exp share: every conscious party member gains experience.  remember who actually took part so they get the
+    // full amount while the rest get half.  only done once per fainted opponent, before the first recipient is picked
+    if (expcalc->seq_no == 0 && expcalc->work[6] == 0) {
+        struct Party *expParty = BattleWorkPokePartyGet(expcalc->bw, 0);
+        u32 everyone = 0;
+        for (int i = 0; i < expParty->count; i++) {
+            struct PartyPokemon *member = BattleWorkPokemonParamGet(expcalc->bw, exp_client_no, i);
+            if (GetMonData(member, MON_DATA_SPECIES, NULL) && GetMonData(member, MON_DATA_HP, NULL) && !GetMonData(member, MON_DATA_IS_EGG, NULL)) {
+                everyone |= No2Bit(i);
+            }
+        }
+        // if this runs again for the same opponent, the flags already hold everyone, so keep the first record
+        if ((sp->obtained_exp_right_flag[client_no] | everyone) != sp->obtained_exp_right_flag[client_no]) {
+            originalExpRecipients = sp->obtained_exp_right_flag[client_no];
+        }
+        sp->obtained_exp_right_flag[client_no] |= everyone;
+    }
+#endif // MODERN_EXP_SHARE
 
     if (expcalc->seq_no < 37) {
         // grab the pokémon that is actually gaining the experience
@@ -1431,6 +1452,15 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
                 }
                 sp->exp_share_obtained_exp = 0;
             }
+
+#ifdef MODERN_EXP_SHARE
+            // no splitting: each Pokémon that took part gets the full amount, the rest of the party gets half
+            sp->obtained_exp = (originalExpRecipients & No2Bit(sel_mons_no)) ? totalexp : totalexp / 2;
+            if (sp->obtained_exp == 0) {
+                sp->obtained_exp = 1;
+            }
+            sp->exp_share_obtained_exp = 0;
+#endif // MODERN_EXP_SHARE
         }
     }
 
@@ -1489,6 +1519,16 @@ void Task_DistributeExp_Extend(void *arg0, void *work)
             }
             sp->exp_share_obtained_exp = 0;
         }
+
+#ifdef MODERN_EXP_SHARE
+        if (sel_mons_no < BattleWorkPokeCountGet(expcalc->bw, exp_client_no)) {
+            sp->obtained_exp = (originalExpRecipients & No2Bit(sel_mons_no)) ? totalexp : totalexp / 2;
+            if (sp->obtained_exp == 0) {
+                sp->obtained_exp = 1;
+            }
+            sp->exp_share_obtained_exp = 0;
+        }
+#endif // MODERN_EXP_SHARE
     }
 
 #ifdef DEBUG_PRINT_EXPERIENCE_VALUES

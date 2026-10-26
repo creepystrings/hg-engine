@@ -91,6 +91,10 @@
 
 // DIFFICULTY_VARIABLE holds the difficulty picked at the start of the game: 0 = Normal, 1 = Insane
 #define DIFFICULTY_VARIABLE 0x416E
+
+// MODERN_EXP_SHARE gives experience to the whole party after every knockout, like Gen 8 onward: Pokémon that took part
+// each get the full amount, the rest of the conscious party gets half (and EVs).  comment out for the Gen 4 held-item Exp. Share
+#define MODERN_EXP_SHARE
 // #define UNCAP_CANDIES_FROM_LEVEL_CAP
 // #define ALLOW_LEVEL_CAP_EVOLVE
 
