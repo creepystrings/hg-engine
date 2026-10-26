@@ -46,13 +46,13 @@ scr_seq_D02R0101_000:
 	npc_msg 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, 252
 	goto_if_ne _005A
 	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
 	goto _007D
 
 _005A:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_ne _0075
 	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
 	goto _007D

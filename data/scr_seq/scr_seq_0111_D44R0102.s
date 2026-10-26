@@ -128,13 +128,13 @@ _0158:
 
 _015E:
 	get_starter_choice VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 152
+	compare VAR_TEMP_x4000, 252
 	goto_if_ne _017B
 	setvar VAR_OBJ_0, 1048
 	goto _019A
 
 _017B:
-	compare VAR_TEMP_x4000, 155
+	compare VAR_TEMP_x4000, 255
 	goto_if_ne _0194
 	setvar VAR_OBJ_0, 1049
 	goto _019A

@@ -71,13 +71,13 @@ _007C:
 	npc_msg 0
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, 252
 	goto_if_ne _00C1
 	trainer_battle TRAINER_RIVAL_SILVER_9, 0, 0, 0
 	goto _00E4
 
 _00C1:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_ne _00DC
 	trainer_battle TRAINER_RIVAL_SILVER_13, 0, 0, 0
 	goto _00E4

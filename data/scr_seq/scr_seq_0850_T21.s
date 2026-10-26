@@ -565,13 +565,13 @@ scr_seq_T21_003:
 	npc_msg 13
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, 252
 	goto_if_ne _070C
 	trainer_battle TRAINER_PASSERBY_BOY_2, 0, 1, 0
 	goto _072F
 
 _070C:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_ne _0727
 	trainer_battle TRAINER_PASSERBY_BOY_3, 0, 1, 0
 	goto _072F

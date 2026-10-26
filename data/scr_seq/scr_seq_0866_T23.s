@@ -123,13 +123,13 @@ _018E:
 	npc_msg 1
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, 252
 	goto_if_ne _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
 	goto _01DA
 
 _01B7:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, 255
 	goto_if_ne _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
 	goto _01DA
