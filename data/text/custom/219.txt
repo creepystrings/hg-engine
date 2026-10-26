@@ -1,10 +1,10 @@
                                                                                 
-...\n...\rYaaaaaaawn...\n...\rHuh? It’s already become so\nbright outside!\r
-...\n...\rYaaaaawn...\n...\rHuh? What?! Is it already that late?!\nOh no! I overslept!\r
-...\n...\rHmm. Looks like the sun is descending\nin the sky...\r...So this would be what is called\n“twilight,” wouldn’t it?\r
-...\n...\rHmm... Interesting...\n...\rHuh? Oh! Excuse me, sorry!\nI was just reading this book here.\r
-...\n...\rYaaaaaaawn...\n...\rHuh? A guest?\nAt this hour?\r
-Sorry to keep you waiting!\rWelcome to the world of Pokémon!\rMy name is Professor Oak.\rBut everyone calls me the\nPokémon Professor.\rBefore we go any further, I’d like to\ntell you a few things you should\fknow about this world!\r
+...\n...\rHmm... Another morning\nwithout a single cloud...\r
+...\n...\rHuh? Is it this late already?!\nI was up all night with rain charts!\r
+...\n...\rThe sun is setting again...\nStill no clouds over Varsha.\r...Another dry day gone,\nisn’t it?\r
+...\n...\rHmm... Interesting...\n...\rHuh? Oh! Excuse me, sorry!\nI was lost in these monsoon records.\r
+...\n...\rYaaaaaaawn...\n...\rHuh? A visitor?\nAt this hour?\r
+Sorry to keep you waiting!\rWelcome to the Varsha region!\rMy name is Anaya Rao.\rBut everyone calls me the\nMonsoon Professor.\rBefore we go any further, I’d like to\ntell you a few things you should\fknow about this world!\r
 I will first tell you important\nthings about this game.\n\nPlease touch any topic you’d like\nto know more about on the\nlower screen.
                                   
 I’ll explain this game’s controls.\n\nYou can control this game by\ntouching the lower screen, also\ncalled the Touch Screen.\n\nPlease touch the panel in the\nbottom right of the Touch Screen.
@@ -33,7 +33,7 @@ At times, you will be challenged\nby others to a battle.\nAt other times, wild c
 However, your adventure is not\nsolely about becoming powerful.
 On your travels, we hope that\nyou will meet countless people\nand, through them, achieve\npersonal growth.\n\nThis is the most important\nobjective of this adventure.
 This world is widely inhabited by\ncreatures known as Pokémon.\r
-We humans live alongside Pokémon\nas friends.\rAt times we play together, and at\nother times we work together.\rSome people use their Pokémon to\nbattle and develop closer bonds\fwith them.\r
+We humans live alongside Pokémon\nas friends.\rTogether we share the land,\nthe rivers and the rains.\rBut for three years now, the\nmonsoon has not come to Varsha...\rRivers are drying, and the Pokémon\nwho need them are suffering.\r
 Now, why don’t you tell me a little bit\nabout yourself?\r
 Are you a boy?\nOr are you a girl?\fWon’t you please tell me? {YESNO 0}
 So, you’re a boy then? {YESNO 0}
@@ -41,7 +41,7 @@ So, you’re a girl then? {YESNO 0}
 Please tell me your name.
 Your name is {STRVAR_1 3, 0, 0}? {YESNO 0}
 Your name is {STRVAR_1 3, 0, 0}? {YESNO 0}
-{STRVAR_1 3, 0, 0}!\nAre you ready?\rYour very own tale of grand adventure\nis about to unfold.\rFun experiences, difficult experiences,\nthere’s so much waiting for you!\rDreams! Adventure!\nLet’s go to the world of Pokémon!\rI’ll see you later!\r
+{STRVAR_1 3, 0, 0}!\nAre you ready?\rYour very own tale of grand adventure\nis about to unfold.\rSomewhere out there, the answer to\nthe missing rains is waiting.\rMaybe you’re the one\nwho will find it!\rLet’s go to the world of Pokémon!\rI’ll see you later!\r
 CONTROL INFO
 ADVENTURE INFO
 NO INFO NEEDED
