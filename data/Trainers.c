@@ -31160,6 +31160,83 @@ const TrainerData sTrainerData[] = {
         },
     },
 
+    // Insane twin of trainer 2 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    [738] = {
+        .name = "Silver",
+        .data = {
+            .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
+            .trainerClass = TRAINERCLASS_RIVAL,
+            .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
+            .aiFlags = F_TRAINER_EXPERT_AI,
+            .battleType = SINGLE_BATTLE,
+        },
+        .party = {
+            {
+                .ivs = 255,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .level = 5,
+                .species = SPECIES_CYNDAQUIL,
+                .item = ITEM_ORAN_BERRY,
+                .moves = { MOVE_EMBER, MOVE_QUICK_ATTACK, MOVE_SMOKESCREEN, MOVE_TACKLE },
+                .setIvs = { 31, 31, 31, 31, 31, 31 }, // hp, atk, def, spe, spatk, spdef
+                .setEvs = { 4, 0, 0, 252, 252, 0 },
+                .nature = NATURE_TIMID,
+                .ballSeal = 0,
+            },
+        },
+    },
+
+    // Insane twin of trainer 3 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    [739] = {
+        .name = "Silver",
+        .data = {
+            .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
+            .trainerClass = TRAINERCLASS_RIVAL,
+            .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
+            .aiFlags = F_TRAINER_EXPERT_AI,
+            .battleType = SINGLE_BATTLE,
+        },
+        .party = {
+            {
+                .ivs = 255,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .level = 5,
+                .species = SPECIES_TOTODILE,
+                .item = ITEM_ORAN_BERRY,
+                .moves = { MOVE_WATER_GUN, MOVE_BITE, MOVE_SCRATCH, MOVE_LEER },
+                .setIvs = { 31, 31, 31, 31, 31, 31 }, // hp, atk, def, spe, spatk, spdef
+                .setEvs = { 252, 252, 4, 0, 0, 0 },
+                .nature = NATURE_ADAMANT,
+                .ballSeal = 0,
+            },
+        },
+    },
+
+    // Insane twin of trainer 265 (Silver, Cherrygrove City). Swapped in by enemy_party.c when VAR_DIFFICULTY is Insane.
+    [740] = {
+        .name = "Silver",
+        .data = {
+            .trainerType = TRAINER_DATA_TYPE_MOVES | TRAINER_DATA_TYPE_ITEMS | TRAINER_DATA_TYPE_IV_EV_SET | TRAINER_DATA_TYPE_NATURE_SET,
+            .trainerClass = TRAINERCLASS_RIVAL,
+            .items = { ITEM_NONE, ITEM_NONE, ITEM_NONE, ITEM_NONE },
+            .aiFlags = F_TRAINER_EXPERT_AI,
+            .battleType = SINGLE_BATTLE,
+        },
+        .party = {
+            {
+                .ivs = 255,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .level = 5,
+                .species = SPECIES_CHIKORITA,
+                .item = ITEM_ORAN_BERRY,
+                .moves = { MOVE_RAZOR_LEAF, MOVE_POISON_POWDER, MOVE_TACKLE, MOVE_GROWL },
+                .setIvs = { 31, 31, 31, 31, 31, 31 }, // hp, atk, def, spe, spatk, spdef
+                .setEvs = { 252, 0, 252, 0, 4, 0 },
+                .nature = NATURE_BOLD,
+                .ballSeal = 0,
+            },
+        },
+    },
 };
 
 const u16 sTrainerTextOrder[] = {

@@ -34,6 +34,38 @@ void LONG_CALL *Encounter_New(struct BattleSetup *setup, s32 effect, s32 bgm, u3
  *  @param a first to swap
  *  @param b second to swap
  */
+#ifdef DIFFICULTY_VARIABLE
+// Insane difficulty: { normal trainer id, insane twin id }.
+// The twin's header (class, items, AI flags, data layout) and party replace the normal one when the player
+// picked Insane; the normal trainer's name and text are kept, so twins need no trainer text of their own.
+static const u16 sInsaneTrainerTable[][2] = {
+    { 2, 738 },   // Silver, Cherrygrove City (player picked Chikorita, Silver has Cyndaquil)
+    { 3, 739 },   // Silver, Cherrygrove City (player picked Cyndaquil, Silver has Totodile)
+    { 265, 740 }, // Silver, Cherrygrove City (player picked Totodile, Silver has Chikorita)
+};
+
+/**
+ *  @brief return the trainer id whose header and party should be used for this battle
+ *
+ *  @param trainerID trainer id from the battle setup
+ *  @return the Insane twin when the player chose Insane and one exists, otherwise trainerID
+ */
+static u32 GetDifficultyTrainerID(u32 trainerID)
+{
+    if (GetScriptVar(DIFFICULTY_VARIABLE) != 1) {
+        return trainerID;
+    }
+
+    for (u32 i = 0; i < NELEMS(sInsaneTrainerTable); i++) {
+        if (sInsaneTrainerTable[i][0] == trainerID) {
+            return sInsaneTrainerTable[i][1];
+        }
+    }
+
+    return trainerID;
+}
+#endif // DIFFICULTY_VARIABLE
+
 void swap(int *a, int *b)
 {
     int temp = *a;
@@ -78,7 +110,16 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
 
     buf = (u8 *)sys_AllocMemory(heapID, sizeof(struct FULL_TRAINER_MON_DATA_STRUCTURE) * 6);
 
-    TT_TrainerPokeDataGet(bp->trainer_id[num], buf);
+    u32 partyID = bp->trainer_id[num];
+#ifdef DIFFICULTY_VARIABLE
+    partyID = GetDifficultyTrainerID(partyID);
+    if (partyID != bp->trainer_id[num]) {
+        // the first 20 bytes of TRAINER_DATA match the trainer data file layout
+        ReadFromNarcMemberByIdPair(&bp->trainer_data[num], ARC_TRAINER_DATA, partyID, 0, 20);
+    }
+#endif // DIFFICULTY_VARIABLE
+
+    TT_TrainerPokeDataGet(partyID, buf);
 
     if (TT_TrainerTypeSexGet(bp->trainer_data[num].tr_type) == 1) // if trainer is female
     {
