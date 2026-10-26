@@ -124,6 +124,22 @@ $(OPENDEMO_NARC): $(OPENDEMO_DEPENDENCIES)
 NARC_FILES += $(OPENDEMO_NARC)
 
 
+# intro (professor speech) graphics: a/1/2/0 member 10 is the professor's picture, 11 its palette
+# only the files in rawdata/intro_gfx replace the rom's copies; data/graphics/intro holds the editable png
+INTROGFX_DIR := $(BUILD)/a120
+INTROGFX_NARC := $(BUILD_NARC)/a120.narc
+INTROGFX_TARGET := $(FILESYS)/a/1/2/0
+INTROGFX_DEPENDENCIES_DIR := rawdata/intro_gfx
+INTROGFX_DEPENDENCIES := $(wildcard $(INTROGFX_DEPENDENCIES_DIR)/*)
+
+$(INTROGFX_NARC): $(INTROGFX_DEPENDENCIES)
+	$(NARCHIVE) extract $(INTROGFX_TARGET) -o $(INTROGFX_DIR) -nf
+	cp -r $(INTROGFX_DEPENDENCIES_DIR)/. $(INTROGFX_DIR)
+	$(NARCHIVE) create $@ $(INTROGFX_DIR) -nf
+
+NARC_FILES += $(INTROGFX_NARC)
+
+
 MONDATA_DIR := $(BUILD)/a002
 MONDATA_NARC := $(BUILD_NARC)/personal.narc
 MONDATA_TARGET := $(FILESYS)/a/0/0/2
@@ -902,5 +918,5 @@ $(MSGDATA_NARC): $(MSGDATA_DEPENDENCIES) $(MSGDATA_COMPILETIME_DEPENDENCIES) $(w
 	$(NARCHIVE) create $@ $(MSGDATA_DIR) -nf
 
 # rebuild every build so edits other tools make to base/root are not overwritten by a stale copy
-.PHONY: $(BATTLEHUD_NARC) $(MOVEPARTICLES_NARC) $(OPENDEMO_NARC) $(BAGGFX_NARC) $(DEXGFX_NARC) $(BATTLEGFX_NARC)
+.PHONY: $(BATTLEHUD_NARC) $(MOVEPARTICLES_NARC) $(OPENDEMO_NARC) $(INTROGFX_NARC) $(BAGGFX_NARC) $(DEXGFX_NARC) $(BATTLEGFX_NARC)
 .PHONY: $(OTHERPOKE_NARC) $(FONT_NARC) $(TEXTBOX_NARC) $(BALL_SPA_NARC) $(MSGDATA_NARC)
