@@ -1,0 +1,20 @@
+{
+  "header": "data/scr_seq/include/event_D44R0101.inc",
+  "eventId": "122",
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 9,
+      "dest_header_id": "MAP_T30",
+      "dest_warp_id": 2,
+      "y": 0
+    },
+    {
+      "x": 6,
+      "z": 5,
+      "dest_header_id": "MAP_D44R0102",
+      "dest_warp_id": 0,
+      "y": 0
+    }
+  ]
+}

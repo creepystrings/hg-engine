@@ -1,0 +1,129 @@
+{
+  "header": "data/scr_seq/include/event_D24R0215.inc",
+  "eventId": "298",
+  "bg_events": [
+    {
+      "script": "_EV_scr_seq_D24R0215_001 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0215_001 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 4,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0215_001 + 1",
+      "type": 0,
+      "x": 4,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    },
+    {
+      "script": "_EV_scr_seq_D24R0215_001 + 1",
+      "type": 0,
+      "x": 8,
+      "z": 3,
+      "y": 0,
+      "player_facing_dir": 4
+    }
+  ],
+  "object_events": [
+    {
+      "id": "obj_D24R0215_monstarball",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0215_STARDUST",
+      "script": "std_itemball_d24r0215_stardust",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0215_monstarball_2",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0215_STAR_PIECE",
+      "script": "std_itemball_d24r0215_star_piece",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 8,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0215_monstarball_3",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0215_LEPPA_BERRY",
+      "script": "std_itemball_d24r0215_leppa_berry",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 4,
+      "z": 12,
+      "y": 0
+    },
+    {
+      "id": "obj_D24R0215_monstarball_4",
+      "graphics_id": "SPRITE_MONSTARBALL",
+      "movement_type": 0,
+      "trainer_type": 0,
+      "hidden_flag": "FLAG_HIDE_ITEMBALL_D24R0215_MYSTIC_WATER",
+      "script": "std_itemball_d24r0215_mystic_water",
+      "initial_dir": 0,
+      "param0": 0,
+      "param1": 0,
+      "param2": 0,
+      "movement_range_x": 0,
+      "movement_range_z": 0,
+      "x": 8,
+      "z": 12,
+      "y": 0
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "z": 17,
+      "dest_header_id": "MAP_D24R0206",
+      "dest_warp_id": 1,
+      "y": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "script": "_EV_scr_seq_D24R0215_000 + 1",
+      "x": 6,
+      "z": 3,
+      "width": 1,
+      "length": 1,
+      "y": 0,
+      "value": 0,
+      "var": "VAR_UNK_40D4"
+    }
+  ]
+}
