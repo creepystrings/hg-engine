@@ -521,6 +521,10 @@ void LONG_CALL SetupAndStartTutorialBattle(TaskManager *taskManager)
 {
     struct BattleSetup *setup = BattleSetup_New_Tutorial(11, taskManager->fieldSystem);
 
+    // Pokémon Monsoon: the tutorial is shown by Kabir, so his trainer is always male (Ethan's back sprite).
+    // the name comes from text archive 445, which holds "Kabir" for both genders.
+    ((struct PlayerProfile *)setup->profile[BATTLER_PLAYER])->gender = 0;
+
     struct PartyPokemon *marill = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], 0);
 
     // move slot 1 is tackle

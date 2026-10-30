@@ -1,11 +1,11 @@
-Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fYour friend Lyra was just here.\rShe was playing hide-and-seek with\nher MARILL.\rOh, I almost forgot! Our acquaintance,\nProfessor Elm, was looking for you.\rHe said he had a favor to ask of you.\rYou know where the lab is, right?\nIt’s right next door to us.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r
-Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fYour friend Ethan was just here.\rHe was playing hide-and-seek with\nhis MARILL.\rOh, I almost forgot! Our acquaintance,\nProfessor Elm, was looking for you.\rHe said he had a favor to ask of you.\rYou know where the lab is, right?\nIt’s right next door to us.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r
+Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fKabir was just here looking for you.\rHe went down to the jetty again to\ncheck on the sick Water Pokémon.\rThe backwater’s lower every morning...\nThree years without a monsoon.\rOh, I almost forgot! Professor Rao\nwas looking for you.\rShe said she had a favor to ask.\rYou know where her lab is, right?\nIt’s the old boat shed next door.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r
+Hi, {STRVAR_1 3, 0, 0}!\nYou’re finally awake.\fKabir was just here looking for you.\rHe went down to the jetty again to\ncheck on the sick Water Pokémon.\rThe backwater’s lower every morning...\nThree years without a monsoon.\rOh, I almost forgot! Professor Rao\nwas looking for you.\rShe said she had a favor to ask.\rYou know where her lab is, right?\nIt’s the old boat shed next door.\rBy the way, do you have everything\nyou need to go out?\fHere, use this Bag to carry things...\r
 This is your Trainer Card...\r
 Here you can save a record of\nyour progress...\r
 These are also rather helpful...\r
 Just try touching the buttons, and\nyou’ll know what to do in no time.\r
-Professor Elm has been waiting for\nyou, dear. Please, go and help him.
-Oh! {STRVAR_1 3, 0, 0}!\nThat’s a cute Pokémon you have.\rProfessor Elm must have given it\nto you?\rOh, Professor Elm has a task for you,\nyou say?\fWhat kind of task?\r...\rI see. That sounds a little difficult.\rBut when someone makes that kind of\nrequest of you, it must be important!\rOh, that’s right!\nI completely forgot!\rYour Pokégear came back from the\nrepair shop!\rHere you go!\r
+Professor Rao has been waiting for\nyou, dear. Please, go and help her.
+Oh! {STRVAR_1 3, 0, 0}!\nThat’s a cute Pokémon you have.\rProfessor Rao must have given it\nto you?\rOh, Professor Rao has a task for you,\nyou say?\fWhat kind of task?\r...\rI see. That sounds a little difficult.\rBut when someone makes that kind of\nrequest of you, it must be important!\rOh, that’s right!\nI completely forgot!\rYour Pokégear came back from the\nrepair shop!\rHere you go!\r
 {STRVAR_1 3, 0, 0} received\nthe Pokégear!\r
 The Pokémon Gear...\nor Pokégear, as it’s often called,\fis what every Trainer should have.\r
 Guess what?\nYou can use the Pokégear to make a\fphone call, too.\fDo you remember how? {YESNO 0}
@@ -31,8 +31,8 @@ WITHDRAW
 DEPOSIT MONEY
 CHANGE
 EXIT
-Hi, {STRVAR_1 3, 0, 0}!\nProfessor Elm told me that\fhe has something to give you!\r
-Professor Elm told me that\nhe has something to give you.\fWhy don’t you visit his lab?
+Hi, {STRVAR_1 3, 0, 0}!\nProfessor Rao told me that\fshe has something to give you!\r
+Professor Rao told me that\nshe has something to give you.\fWhy don’t you visit her lab?
 The TV is playing a movie!\rTwo boys are in a cave searching\nfor treasure!\rI better get going...
 Cinnabar Volcano Burger!\nMom’s specialty!
 A squeaky-clean sink!\nMom loves having it clean.

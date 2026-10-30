@@ -48,7 +48,7 @@ scrdef scr_seq_T20_017
 scrdef_end
 
 scr_seq_T20_006:
-	get_friend_sprite VAR_OBJ_0
+	setvar VAR_OBJ_0, 0 // Kabir always uses the Ethan sprite (SPRITE_HERO)
 	goto_if_unset FLAG_UNK_189, _005F
 	clearflag FLAG_UNK_189
 	end

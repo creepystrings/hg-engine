@@ -39,7 +39,7 @@ scrdef scr_seq_R29_008
 scrdef_end
 
 scr_seq_R29_000:
-	get_friend_sprite VAR_OBJ_1
+	setvar VAR_OBJ_1, 0 // Kabir always uses the Ethan sprite (SPRITE_HERO)
 	check_badge BADGE_ZEPHYR, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0043

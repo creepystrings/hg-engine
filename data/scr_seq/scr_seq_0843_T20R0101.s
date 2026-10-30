@@ -46,7 +46,7 @@ scrdef scr_seq_T20R0101_015
 scrdef_end
 
 scr_seq_T20R0101_010:
-	get_friend_sprite VAR_OBJ_0
+	setvar VAR_OBJ_0, 0 // Kabir always uses the Ethan sprite (SPRITE_HERO)
 	goto_if_set FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE, _00B8
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _0070

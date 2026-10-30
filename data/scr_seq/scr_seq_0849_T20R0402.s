@@ -36,7 +36,7 @@ scrdef_end
 
 scr_seq_T20R0402_002:
 	goto_if_set FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND, _0025
-	get_friend_sprite VAR_OBJ_0
+	setvar VAR_OBJ_0, 0 // Kabir always uses the Ethan sprite (SPRITE_HERO)
 _0025:
 	end
 
