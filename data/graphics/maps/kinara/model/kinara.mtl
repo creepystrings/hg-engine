@@ -1,50 +1,38 @@
-newmtl ka07
+newmtl kfF
 Kd 1 1 1
-map_Kd ka07.png
+map_Kd kfF.png
 
-newmtl ka05
+newmtl kfG
 Kd 1 1 1
-map_Kd ka05.png
+map_Kd kfG.png
 
-newmtl ka06
+newmtl kfS
 Kd 1 1 1
-map_Kd ka06.png
+map_Kd kfS.png
 
-newmtl kf01
+newmtl kfC
 Kd 1 1 1
-map_Kd kf01.png
-
-newmtl ka01
-Kd 1 1 1
-map_Kd ka01.png
-
-newmtl kf03
-Kd 1 1 1
-map_Kd kf03.png
-
-newmtl kf00
-Kd 1 1 1
-map_Kd kf00.png
+map_Kd kfC.png
 
 newmtl ka00
 Kd 1 1 1
 map_Kd ka00.png
 
-newmtl kf02
+newmtl kfW
 Kd 1 1 1
-map_Kd kf02.png
+map_Kd kfW.png
 
-newmtl ka03
+newmtl kfY
 Kd 1 1 1
-map_Kd ka03.png
+map_Kd kfY.png
+
+newmtl ka01
+Kd 1 1 1
+map_Kd ka01.png
 
 newmtl ka02
 Kd 1 1 1
 map_Kd ka02.png
-
-newmtl ka04
-Kd 1 1 1
-map_Kd ka04.png
 
 newmtl k_palmdry
 Kd 1 1 1

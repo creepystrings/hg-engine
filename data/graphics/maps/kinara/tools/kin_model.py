@@ -34,105 +34,104 @@ def face(name,png,verts,uvs,n):
     if name not in matidx: matidx[name]=len(mats); mats.append((name,png,[]))
     vi=[addv(v) for v in verts]; ti=[addt(t) for t in uvs]
     mats[matidx[name]][2].append(' '.join(f'{a}/{b}/{n}' for a,b in zip(vi,ti)))
-# ---- ground: pure areas -> 2x2 "family" textures in world space, edges/details -> unique cells
-from scipy.cluster.vq import kmeans2
+# ---- ground: rebuilt from the DS-ready tileset (seamless HGSS-style tiles + autotiled path/shore edges)
 import glob
 TB={os.path.basename(f)[5:7]:np.asarray(Image.open(f).convert('RGB')).astype(np.int32) for f in sorted(glob.glob('out/ground/tile_*.png'))}
-TB={k:v for k,v in TB.items() if v.shape==(16,16,3)}
+FAM={'G':['10','11','12'],'P':['00','01','02'],'S':['13','14','15'],'C':['20','21','22'],'F':['25','26','27'],'Y':['16','17'],'W':['70','71']}
 gi=g.astype(np.int32)
-px=gi.reshape(-1,3).astype(float); cent,_=kmeans2(px[::5],9,minit='++',seed=7)
-lab=np.argmin(((gi.reshape(-1,1,3)-cent[None])**2).sum(-1),1).reshape(512,512)
-# merge clusters that are the same material (e.g. grass light/dark speckle): group by cell co-occurrence
-cells={(r,c):gi[r*16:r*16+16,c*16:c*16+16] for r in range(32) for c in range(32)}
-cellmean={k:v.reshape(-1,3).mean(0) for k,v in cells.items()}
-# material = cluster of cell means (cells, not pixels, so speckle stays inside one material)
-cm=np.array([cellmean[(r,c)] for r in range(32) for c in range(32)])
-mc,ml=kmeans2(cm,8,minit='++',seed=11); ml=ml.reshape(32,32)
-uniq={}; recon=np.zeros_like(g); GRID={}
-def put(nm,img,r,c):
-    if nm not in uniq: uniq[nm]=1; quant(img).save(f'{OUT}/{nm}.png')
-    recon[r*16:r*16+16,c*16:c*16+16]=img; GRID[(r,c)]=nm
-def cdist(a,b): return np.abs(a-b).mean()
-# a cell is "plain" if it is close to the typical cells of its material
-assigned={}
-for mi in range(8):
-    ks=[(r,c) for r in range(32) for c in range(32) if ml[r,c]==mi]
-    if len(ks)<12: continue
-    # medoid-ish representatives: the 4 cells with the lowest mean distance to 30 random members
-    rng=np.random.default_rng(mi); sample=[ks[i] for i in rng.choice(len(ks),min(30,len(ks)),replace=False)]
-    score={k:np.mean([cdist(cells[k],cells[s]) for s in sample]) for k in ks}
-    best=sorted(ks,key=lambda k:score[k])
-    base=score[best[0]]
-    fn=f'kf{mi:02d}'
-    labs=np.concatenate([lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16].ravel() for k in ks])
-    share=np.bincount(labs,minlength=9)/len(labs); dom=set(np.where(share>=0.08)[0])
-    def purity(k): return np.isin(lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16],list(dom)).mean()
-    plain=[k for k in ks if purity(k)>=0.995 and score[k]<base*1.5+3]
-    if len(plain)<8: continue
-    best=[k for k in best if k in set(plain)]
-    half=best[:max(4,len(best)//2)]
-    def unif(k):
-        lk=lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]; cnt=np.bincount(lk.ravel(),minlength=9)
-        rare=(cnt>0)&(cnt<12)   # labels that only appear as a few stray pixels (lines, dots)
-        return rare.sum()*100+cells[k].sum(2).std()
-    best=sorted(half,key=unif)
-    reps=[]
-    for k in best:
-        if all(cdist(cells[k],cells[q])>3 for q in reps): reps.append(k)
-        if len(reps)==4: break
-    while len(reps)<4: reps.append(reps[0])
+pal={k:np.unique(np.concatenate([TB[t].reshape(-1,3) for t in v]),axis=0) for k,v in FAM.items() if k!='Y'}
+ks=list(pal)
+Dm=np.stack([np.abs(gi.reshape(-1,1,3)-pal[k][None]).sum(2).min(1) for k in ks],1)
+plab=np.array(ks)[Dm.argmin(1)].reshape(512,512)
+SEM=[]
+for r in range(32):
+    row=[]
+    for c in range(32):
+        cell=plab[r*16:r*16+16,c*16:c*16+16]; vals,cnt=np.unique(cell,return_counts=True); fr=dict(zip(vals,cnt/256))
+        row.append('P' if fr.get('P',0)>=0.4 else max(fr,key=fr.get))
+    SEM.append(row)
+def setr(r0,r1,c0,c1,v):
+    for r in range(r0,r1+1):
+        for c in range(c0,c1+1): SEM[r][c]=v
+setr(0,6,0,7,'F'); setr(25,31,0,6,'F')          # paddy-field plots (look like dry earth to the classifier)
+setr(10,12,0,2,'Y'); setr(29,30,18,19,'Y')      # green paddy patches
+setr(15,16,25,30,'J')                           # jetty
+SEM[15][31]='W'; SEM[16][31]='W'
+SEM[13][18]='P'; SEM[14][23]='S'
+open('sem_grid.txt','w').write('\n'.join(''.join(r) for r in SEM))
+def sem(r,c,default):
+    if 0<=r<32 and 0<=c<32: return SEM[r][c]
+    return default
+PLAIN={k:v[0] for k,v in FAM.items()}
+def mask_of(tid,mat): # pixels of an edge tile that are NOT the material
+    return np.abs(TB[tid].reshape(-1,1,3)-pal[mat][None]).sum(2).min(1).reshape(16,16)>0
+EDGE={'P':{'N':'03','E':'04','S':'05','W':'06','NW':'41','NE':'42','SE':'43','SW':'44'},
+      'W':{'N':'50','E':'51','S':'52','W':'53','NW':'60','NE':'61','SE':'62','SW':'63'}}
+EM={mt:{k:mask_of(t,mt) for k,t in d.items()} for mt,d in EDGE.items()}
+JOIN={'P':{'P','J'},'W':{'W','J'}}
+uniq={}; recon=np.zeros_like(g); GRID={}; SPECIAL={}
+for r in range(32):
+    for c in range(32):
+        mt=SEM[r][c]
+        if mt=='J':
+            key=('J',r,c); SPECIAL[key]=gi[r*16:r*16+16,c*16:c*16+16]; GRID[(r,c)]=key; continue
+        if mt in EDGE:
+            nb={'N':sem(r-1,c,mt),'S':sem(r+1,c,mt),'W':sem(r,c-1,mt),'E':sem(r,c+1,mt),
+                'NW':sem(r-1,c-1,mt),'NE':sem(r-1,c+1,mt),'SE':sem(r+1,c+1,mt),'SW':sem(r+1,c-1,mt)}
+            if mt=='P' and c==0: nb['W']='P'; nb['NW']=nb['N'] if nb['N'] in JOIN[mt] else nb['NW']; nb['SW']=nb['S'] if nb['S'] in JOIN[mt] else nb['SW']
+            out={d:v for d,v in nb.items() if v not in JOIN[mt]}
+            # a diagonal only matters when both of its sides are open
+            for d in ('NW','NE','SE','SW'):
+                if d in out and (d[0] in out or d[1] in out): out.pop(d)
+            if out:
+                key=(mt,)+tuple(sorted((d,v) for d,v in out.items()))
+                if key not in SPECIAL:
+                    var=FAM[mt][0]; tile=TB[var].copy()
+                    for d,v in out.items():
+                        src=TB[PLAIN.get(v if v in PLAIN else 'C', '20')] if v!='J' else TB[var]
+                        if v in ('F','Y','D'): src=TB[PLAIN['G']] if mt=='P' else TB['20']
+                        mk=EM[mt][d]; tile[mk]=src[mk]
+                    SPECIAL[key]=tile
+                GRID[(r,c)]=key; continue
+        GRID[(r,c)]=('F',mt)
+# family textures: 2x2 arrangement of the tileset variants, mapped in world space
+FAMTEX={}
+for mt in set(v[1] for v in GRID.values() if v[0]=='F'):
+    vs=FAM[mt]; order=[vs[0],vs[1%len(vs)],vs[2%len(vs)] if len(vs)>2 else vs[1%len(vs)],vs[0]]
     comp=np.zeros((32,32,3),np.int32)
-    for j,q in enumerate(reps): comp[(j//2)*16:(j//2)*16+16,(j%2)*16:(j%2)*16+16]=cells[q]
-    quant(comp).save(f'{OUT}/{fn}.png'); uniq[fn]=1
-    for k in plain:
-        assigned[k]=fn; recon[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]=comp[(k[0]%2)*16:(k[0]%2)*16+16,(k[1]%2)*16:(k[1]%2)*16+16]
-        GRID[k]=fn
-rest=[k for k in cells if k not in assigned]
-print('plain cells',len(assigned),'detail cells',len(rest))
-MAXU=int(os.environ.get('MAXU','130'))
-U=[]; UL=[]
-for k in sorted(rest,key=lambda k:-np.abs(cells[k]-cells[k].mean((0,1))).mean()):
-    lk=lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]
-    hit=[i for i,u in enumerate(U) if cdist(u,cells[k])<9 and (UL[i]!=lk).sum()<=4]
-    if not hit and len(U)<MAXU: U.append(cells[k]); UL.append(lk); hit=[len(U)-1]
-    if not hit: hit=[int(np.argmin([cdist(u,cells[k]) for u in U]))]
-    recon[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]=U[hit[0]]; GRID[k]=('kg',hit[0])
-# pack the detail cells into 64x64 atlases (16 cells each), grouping cells with similar colours
-order=sorted(range(len(U)),key=lambda i:tuple((U[i].reshape(-1,3).mean(0)//24).astype(int)))
-SLOT={}
-for n in range(0,len(order),16):
-    grp=order[n:n+16]; atl=np.zeros((64,64,3),np.int32)
-    for j,i in enumerate(grp):
-        sx,sy=j%4,j//4; atl[sy*16:sy*16+16,sx*16:sx*16+16]=U[i]; SLOT[i]=(f'ka{n//16:02d}',sx,sy)
-    if len(grp)<16:
-        for j in range(len(grp),16): sx,sy=j%4,j//4; atl[sy*16:sy*16+16,sx*16:sx*16+16]=U[grp[0]]
+    for j,t in enumerate(order): comp[(j//2)*16:(j//2)*16+16,(j%2)*16:(j%2)*16+16]=TB[t]
+    nm='kf'+mt; FAMTEX[mt]=nm; quant(comp).save(f'{OUT}/{nm}.png'); uniq[nm]=1
+for (r,c),v in GRID.items():
+    if v[0]=='F': recon[r*16:r*16+16,c*16:c*16+16]=Image.open(f'{OUT}/kf{v[1]}.png').convert('RGB').crop(((c%2)*16,(r%2)*16,(c%2)*16+16,(r%2)*16+16))
+    else: recon[r*16:r*16+16,c*16:c*16+16]=SPECIAL[v]
+skeys=list(SPECIAL); SLOT={}
+for n in range(0,len(skeys),16):
+    grp=skeys[n:n+16]; atl=np.zeros((64,64,3),np.int32)
+    for j in range(16):
+        k=grp[j] if j<len(grp) else grp[0]; sx,sy=j%4,j//4; atl[sy*16:sy*16+16,sx*16:sx*16+16]=SPECIAL[k]
+        if j<len(grp): SLOT[k]=(f'ka{n//16:02d}',sx,sy)
     nm=f'ka{n//16:02d}'; quant(atl).save(f'{OUT}/{nm}.png'); uniq[nm]=1
+print('special tiles',len(SPECIAL),'atlases',(len(skeys)+15)//16)
 def flush_ground():
     done=set()
     for r in range(32):
         for c in range(32):
             if (r,c) in done: continue
-            nm=GRID[(r,c)]
-            if isinstance(nm,tuple):
-                an,sx,sy=SLOT[nm[1]]; done.add((r,c)); x0=c-16; y0=(31-r)-16
+            v=GRID[(r,c)]
+            if v[0]!='F':
+                an,sx,sy=SLOT[v]; done.add((r,c)); x0=c-16; y0=(31-r)-16
                 u0=sx/4; u1=(sx+1)/4; v1=1-sy/4; v0=1-(sy+1)/4
                 face(an,an+'.png',[(x0,y0,0),(x0+1,y0,0),(x0+1,y0+1,0),(x0,y0+1,0)],[(u0,v0),(u1,v0),(u1,v1),(u0,v1)],NUP)
                 continue
             w=1
-            while c+w<32 and (r,c+w) not in done and GRID[(r,c+w)]==nm: w+=1
+            while c+w<32 and (r,c+w) not in done and GRID[(r,c+w)]==v: w+=1
             h=1
-            while r+h<32 and all((r+h,c+k) not in done and GRID[(r+h,c+k)]==nm for k in range(w)): h+=1
+            while r+h<32 and all((r+h,c+k) not in done and GRID[(r+h,c+k)]==v for k in range(w)): h+=1
             for i in range(h):
                 for k in range(w): done.add((r+i,c+k))
-            x0=c-16; y0=(31-(r+h-1))-16
-            if nm.startswith('kf'):
-                # world-aligned: texture row 0 (top) = even map rows, col 0 = even map cols
-                u0=c/2; u1=(c+w)/2
-                v1=(64-r)/2; v0=(64-(r+h))/2   # v grows northwards; even rows sit in the top half
-                uv=[(u0,v0),(u1,v0),(u1,v1),(u0,v1)]
-            else:
-                uv=[(0,0),(w,0),(w,h),(0,h)]
-            face(nm,nm+'.png',[(x0,y0,0),(x0+w,y0,0),(x0+w,y0+h,0),(x0,y0+h,0)],uv,NUP)
+            x0=c-16; y0=(31-(r+h-1))-16; nm=FAMTEX[v[1]]
+            u0=c/2; u1=(c+w)/2; v1=(64-r)/2; v0=(64-(r+h))/2
+            face(nm,nm+'.png',[(x0,y0,0),(x0+w,y0,0),(x0+w,y0+h,0),(x0,y0+h,0)],[(u0,v0),(u1,v0),(u1,v1),(u0,v1)],NUP)
 flush_ground()
 Image.fromarray(recon).save('ground_final.png')
 print('ground textures',len(uniq))
