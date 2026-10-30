@@ -1,0 +1,376 @@
+newmtl kt25
+Kd 1 1 1
+map_Kd kt25.png
+
+newmtl kt26
+Kd 1 1 1
+map_Kd kt26.png
+
+newmtl kt27
+Kd 1 1 1
+map_Kd kt27.png
+
+newmtl kt12
+Kd 1 1 1
+map_Kd kt12.png
+
+newmtl kt10
+Kd 1 1 1
+map_Kd kt10.png
+
+newmtl kt11
+Kd 1 1 1
+map_Kd kt11.png
+
+newmtl kg021
+Kd 1 1 1
+map_Kd kg021.png
+
+newmtl kt13
+Kd 1 1 1
+map_Kd kt13.png
+
+newmtl kt14
+Kd 1 1 1
+map_Kd kt14.png
+
+newmtl kt15
+Kd 1 1 1
+map_Kd kt15.png
+
+newmtl kt20
+Kd 1 1 1
+map_Kd kt20.png
+
+newmtl kt21
+Kd 1 1 1
+map_Kd kt21.png
+
+newmtl kt22
+Kd 1 1 1
+map_Kd kt22.png
+
+newmtl kg032
+Kd 1 1 1
+map_Kd kg032.png
+
+newmtl kg009
+Kd 1 1 1
+map_Kd kg009.png
+
+newmtl kg019
+Kd 1 1 1
+map_Kd kg019.png
+
+newmtl kg029
+Kd 1 1 1
+map_Kd kg029.png
+
+newmtl kg028
+Kd 1 1 1
+map_Kd kg028.png
+
+newmtl kg031
+Kd 1 1 1
+map_Kd kg031.png
+
+newmtl kg024
+Kd 1 1 1
+map_Kd kg024.png
+
+newmtl kt16
+Kd 1 1 1
+map_Kd kt16.png
+
+newmtl kg013
+Kd 1 1 1
+map_Kd kg013.png
+
+newmtl kt17
+Kd 1 1 1
+map_Kd kt17.png
+
+newmtl kg026
+Kd 1 1 1
+map_Kd kg026.png
+
+newmtl kg020
+Kd 1 1 1
+map_Kd kg020.png
+
+newmtl kg036
+Kd 1 1 1
+map_Kd kg036.png
+
+newmtl kg017
+Kd 1 1 1
+map_Kd kg017.png
+
+newmtl kg014
+Kd 1 1 1
+map_Kd kg014.png
+
+newmtl kg010
+Kd 1 1 1
+map_Kd kg010.png
+
+newmtl kg007
+Kd 1 1 1
+map_Kd kg007.png
+
+newmtl kt41
+Kd 1 1 1
+map_Kd kt41.png
+
+newmtl kg006
+Kd 1 1 1
+map_Kd kg006.png
+
+newmtl kg012
+Kd 1 1 1
+map_Kd kg012.png
+
+newmtl kg005
+Kd 1 1 1
+map_Kd kg005.png
+
+newmtl kg034
+Kd 1 1 1
+map_Kd kg034.png
+
+newmtl kg016
+Kd 1 1 1
+map_Kd kg016.png
+
+newmtl kg018
+Kd 1 1 1
+map_Kd kg018.png
+
+newmtl kg022
+Kd 1 1 1
+map_Kd kg022.png
+
+newmtl kg015
+Kd 1 1 1
+map_Kd kg015.png
+
+newmtl kt03
+Kd 1 1 1
+map_Kd kt03.png
+
+newmtl kg035
+Kd 1 1 1
+map_Kd kg035.png
+
+newmtl kt02
+Kd 1 1 1
+map_Kd kt02.png
+
+newmtl kt00
+Kd 1 1 1
+map_Kd kt00.png
+
+newmtl kt01
+Kd 1 1 1
+map_Kd kt01.png
+
+newmtl kg004
+Kd 1 1 1
+map_Kd kg004.png
+
+newmtl kg023
+Kd 1 1 1
+map_Kd kg023.png
+
+newmtl kg001
+Kd 1 1 1
+map_Kd kg001.png
+
+newmtl kt05
+Kd 1 1 1
+map_Kd kt05.png
+
+newmtl kg003
+Kd 1 1 1
+map_Kd kg003.png
+
+newmtl kg002
+Kd 1 1 1
+map_Kd kg002.png
+
+newmtl kg000
+Kd 1 1 1
+map_Kd kg000.png
+
+newmtl kg008
+Kd 1 1 1
+map_Kd kg008.png
+
+newmtl kg033
+Kd 1 1 1
+map_Kd kg033.png
+
+newmtl kg037
+Kd 1 1 1
+map_Kd kg037.png
+
+newmtl kg011
+Kd 1 1 1
+map_Kd kg011.png
+
+newmtl kg030
+Kd 1 1 1
+map_Kd kg030.png
+
+newmtl kt36
+Kd 1 1 1
+map_Kd kt36.png
+
+newmtl kt40
+Kd 1 1 1
+map_Kd kt40.png
+
+newmtl kg039
+Kd 1 1 1
+map_Kd kg039.png
+
+newmtl kg025
+Kd 1 1 1
+map_Kd kg025.png
+
+newmtl kg038
+Kd 1 1 1
+map_Kd kg038.png
+
+newmtl kg027
+Kd 1 1 1
+map_Kd kg027.png
+
+newmtl k_palmdry
+Kd 1 1 1
+map_Kd k_palmdry.png
+
+newmtl k_palm
+Kd 1 1 1
+map_Kd k_palm.png
+
+newmtl k_wallc
+Kd 1 1 1
+map_Kd k_wallc.png
+
+newmtl k_wall00
+Kd 1 1 1
+map_Kd k_wall00.png
+
+newmtl k_wall10
+Kd 1 1 1
+map_Kd k_wall10.png
+
+newmtl k_wall20
+Kd 1 1 1
+map_Kd k_wall20.png
+
+newmtl k_wall30
+Kd 1 1 1
+map_Kd k_wall30.png
+
+newmtl k_plant00
+Kd 1 1 1
+map_Kd k_plant00.png
+
+newmtl k_plant10
+Kd 1 1 1
+map_Kd k_plant10.png
+
+newmtl k_fence
+Kd 1 1 1
+map_Kd k_fence.png
+
+newmtl k_fencec
+Kd 1 1 1
+map_Kd k_fencec.png
+
+newmtl k_wallv
+Kd 1 1 1
+map_Kd k_wallv.png
+
+newmtl k_banana
+Kd 1 1 1
+map_Kd k_banana.png
+
+newmtl k_house_pl00
+Kd 1 1 1
+map_Kd k_house_pl00.png
+
+newmtl k_house_pl10
+Kd 1 1 1
+map_Kd k_house_pl10.png
+
+newmtl k_house_kb00
+Kd 1 1 1
+map_Kd k_house_kb00.png
+
+newmtl k_house_kb01
+Kd 1 1 1
+map_Kd k_house_kb01.png
+
+newmtl k_lab
+Kd 1 1 1
+map_Kd k_lab.png
+
+newmtl k_fishnet
+Kd 1 1 1
+map_Kd k_fishnet.png
+
+newmtl k_hibiscus
+Kd 1 1 1
+map_Kd k_hibiscus.png
+
+newmtl k_marigold
+Kd 1 1 1
+map_Kd k_marigold.png
+
+newmtl k_cloth
+Kd 1 1 1
+map_Kd k_cloth.png
+
+newmtl k_pump
+Kd 1 1 1
+map_Kd k_pump.png
+
+newmtl k_sign
+Kd 1 1 1
+map_Kd k_sign.png
+
+newmtl k_jpost
+Kd 1 1 1
+map_Kd k_jpost.png
+
+newmtl k_well
+Kd 1 1 1
+map_Kd k_well.png
+
+newmtl k_water_level_ma
+Kd 1 1 1
+map_Kd k_water_level_ma.png
+
+newmtl k_houseboat
+Kd 1 1 1
+map_Kd k_houseboat.png
+
+newmtl k_house_nb00
+Kd 1 1 1
+map_Kd k_house_nb00.png
+
+newmtl k_house_nb01
+Kd 1 1 1
+map_Kd k_house_nb01.png
+
+newmtl k_banyan
+Kd 1 1 1
+map_Kd k_banyan.png
+
+newmtl k_canoe
+Kd 1 1 1
+map_Kd k_canoe.png
+

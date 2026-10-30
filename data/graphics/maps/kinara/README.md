@@ -17,3 +17,14 @@ Notes
 - Banyan shrine was 19 colours; the 4 closest shades were merged to fit 15.
 - The building sheet is concept art for 3D modelling, not a texture, so it is not converted.
 - Collision is a draft generated from the mockup; check doors and the paddy fields (left walkable).
+
+## In-game map (v1)
+
+- `model/` — Kinara map source: `kinara.obj/.mtl` + textures (PDSMS conventions, 1 unit per tile, z up, ground at height 1),
+  `kinara.imd` (map, via PDSMS `ImdModel`) and `texset_kinara.imd` (HGSS map texture set 2 + the Kinara textures).
+- Ground is the mockup with props/buildings lifted out and inpainted; cells that match a DS-ready tile use it, the rest are unique 16x16 cells.
+- Props and buildings are camera-facing quads leaning back ~50° (HGSS tree calibration), cut from the mockup art.
+- `g3dcvtr kinara.imd -emdl` -> `kinara.nsbmd`; `g3dcvtr texset_kinara.imd -etex` -> `texset_kinara.nsbtx`.
+- `rawdata/maps/land_data/5_000` = New Bark's map slot (land_data 0): Kinara permissions + model + flat BDHC (height 16, from Route 29) + New Bark's BGS.
+- `rawdata/maps/map_tex/4_002` = map texture set 2 (shared by all Johto outdoor maps) with the Kinara textures appended, so Route 29 next door still renders.
+- Doors: player (11,11), Kabir (18,11), lab (25,11), neighbour (9,22), lab side door (27,11). Events moved in `data/eventdata/zone_event/057_T20.json`.

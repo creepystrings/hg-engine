@@ -426,6 +426,10 @@ endif
 	@echo "intro professor graphics:"
 	cp $(INTROGFX_NARC) $(INTROGFX_TARGET)
 
+	@echo "map land data + map textures (Kinara):"
+	cp $(MAPLAND_NARC) $(MAPLAND_TARGET)
+	cp $(MAPTEX_NARC) $(MAPTEX_TARGET)
+
 	@echo "mon personal data:"
 	cp $(MONDATA_NARC) $(MONDATA_TARGET)
 
