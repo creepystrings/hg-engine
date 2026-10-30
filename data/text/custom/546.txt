@@ -1,3 +1,5 @@
 {STRVAR_1 3, 0, 0} booted up the PC and\nchecked the Mailbox!\r
 There is no Mail...
 It’s a Wii!\rWii is huge in Varsha, too!
+TEST MODE: Mega Evolution test kit!\rTurn off MONSOON_TEST_MEGA in\nconfig.h before release.\r
+A level 36 Sceptile holding Sceptilite\njoined your party for testing!

@@ -95,6 +95,10 @@
 // MODERN_EXP_SHARE gives experience to the whole party after every knockout, like Gen 8 onward: Pokémon that took part
 // each get the full amount, the rest of the conscious party gets half (and EVs).  comment out for the Gen 4 held-item Exp. Share
 #define MODERN_EXP_SHARE
+
+// MONSOON_TEST_MEGA turns the Wii in the player's room into a one-time test kit: Mega Ring, Sceptilite, Blazikenite,
+// Swampertite and the Mega Evolution flag. testing only: comment out before release
+#define MONSOON_TEST_MEGA
 // #define UNCAP_CANDIES_FROM_LEVEL_CAP
 // #define ALLOW_LEVEL_CAP_EVOLVE
 

@@ -15,6 +15,7 @@
 .include "asm/include/std_scripts.inc"
 .include "asm/include/trainers.inc"
 
+#include "config.h"
 #include "constants/item.h"
 #include "constants/moves.h"
 #include "constants/species.h"
@@ -60,6 +61,32 @@ _004B:
 scr_seq_T20R0202_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
+#ifdef MONSOON_TEST_MEGA
+	// test only: the first time the Wii is checked, give the Mega Ring and the starters Mega Stones and enable Mega Evolution
+	goto_if_set FLAG_MEGA_EVOLUTION_ENABLED, _wii_normal
+	npc_msg 3
+	setvar VAR_SPECIAL_x8004, ITEM_MEGA_RING
+	setvar VAR_SPECIAL_x8005, 1
+	callstd std_give_item_verbose
+	setvar VAR_SPECIAL_x8004, ITEM_SCEPTILITE
+	setvar VAR_SPECIAL_x8005, 1
+	callstd std_give_item_verbose
+	setvar VAR_SPECIAL_x8004, ITEM_BLAZIKENITE
+	setvar VAR_SPECIAL_x8005, 1
+	callstd std_give_item_verbose
+	setvar VAR_SPECIAL_x8004, ITEM_SWAMPERTITE
+	setvar VAR_SPECIAL_x8005, 1
+	callstd std_give_item_verbose
+	setflag FLAG_MEGA_EVOLUTION_ENABLED
+	give_mon SPECIES_SCEPTILE, 36, ITEM_SCEPTILITE, 0, 0, VAR_SPECIAL_RESULT
+	npc_msg 4
+	wait_button
+	closemsg
+	releaseall
+	end
+
+_wii_normal:
+#endif // MONSOON_TEST_MEGA
 	npc_msg 2
 	wait_button
 	closemsg
