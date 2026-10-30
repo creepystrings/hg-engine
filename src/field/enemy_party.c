@@ -113,7 +113,7 @@ void MakeTrainerPokemonParty(struct BATTLE_PARAM *bp, int num, int heapID)
     u32 partyID = bp->trainer_id[num];
 #ifdef DIFFICULTY_VARIABLE
     partyID = GetDifficultyTrainerID(partyID);
-    if (partyID != bp->trainer_id[num]) {
+    if (partyID != (u32)bp->trainer_id[num]) {
         // the first 20 bytes of TRAINER_DATA match the trainer data file layout
         ReadFromNarcMemberByIdPair(&bp->trainer_data[num], ARC_TRAINER_DATA, partyID, 0, 20);
     }
