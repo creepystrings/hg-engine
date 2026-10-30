@@ -1,0 +1,342 @@
+[
+ {
+  "file": "coconut_palm_healthy.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   0,
+   0
+  ],
+  "art_size": [
+   32,
+   64
+  ],
+  "texture_size": [
+   32,
+   64
+  ],
+  "colours": 9
+ },
+ {
+  "file": "coconut_palm_drought.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   48,
+   0
+  ],
+  "art_size": [
+   32,
+   64
+  ],
+  "texture_size": [
+   32,
+   64
+  ],
+  "colours": 10
+ },
+ {
+  "file": "banana_plant.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   96,
+   0
+  ],
+  "art_size": [
+   16,
+   32
+  ],
+  "texture_size": [
+   16,
+   32
+  ],
+  "colours": 7
+ },
+ {
+  "file": "hibiscus_bush.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   96,
+   48
+  ],
+  "art_size": [
+   16,
+   16
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 9
+ },
+ {
+  "file": "marigold_pot.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   96,
+   48
+  ],
+  "art_size": [
+   16,
+   16
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 9
+ },
+ {
+  "file": "banyan_shrine.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   0,
+   66
+  ],
+  "art_size": [
+   64,
+   62
+  ],
+  "texture_size": [
+   64,
+   64
+  ],
+  "colours": 15
+ },
+ {
+  "file": "signpost.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   112,
+   80
+  ],
+  "art_size": [
+   16,
+   16
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 3
+ },
+ {
+  "file": "well.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   80,
+   81
+  ],
+  "art_size": [
+   16,
+   15
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 6
+ },
+ {
+  "file": "clothesline.png",
+  "source": "props_a_1x.png",
+  "pos": [
+   80,
+   112
+  ],
+  "art_size": [
+   32,
+   16
+  ],
+  "texture_size": [
+   32,
+   16
+  ],
+  "colours": 8
+ },
+ {
+  "file": "houseboat_stranded.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   0,
+   0
+  ],
+  "art_size": [
+   64,
+   32
+  ],
+  "texture_size": [
+   64,
+   32
+  ],
+  "colours": 13
+ },
+ {
+  "file": "chinese_fishing_net.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   96,
+   0
+  ],
+  "art_size": [
+   32,
+   64
+  ],
+  "texture_size": [
+   32,
+   64
+  ],
+  "colours": 6
+ },
+ {
+  "file": "water_level_marker.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   66,
+   32
+  ],
+  "art_size": [
+   11,
+   32
+  ],
+  "texture_size": [
+   16,
+   32
+  ],
+  "colours": 11
+ },
+ {
+  "file": "canoe.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   0,
+   48
+  ],
+  "art_size": [
+   32,
+   16
+  ],
+  "texture_size": [
+   32,
+   16
+  ],
+  "colours": 5
+ },
+ {
+  "file": "helion_pump.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   64,
+   80
+  ],
+  "art_size": [
+   16,
+   32
+  ],
+  "texture_size": [
+   16,
+   32
+  ],
+  "colours": 9
+ },
+ {
+  "file": "laterite_wall_corner.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   32,
+   81
+  ],
+  "art_size": [
+   16,
+   15
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 6
+ },
+ {
+  "file": "jetty_plank.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   96,
+   81
+  ],
+  "art_size": [
+   16,
+   15
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 4
+ },
+ {
+  "file": "laterite_wall.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   0,
+   82
+  ],
+  "art_size": [
+   16,
+   14
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 6
+ },
+ {
+  "file": "jetty_post.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   98,
+   112
+  ],
+  "art_size": [
+   11,
+   16
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 5
+ },
+ {
+  "file": "bamboo_fence_corner.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   32,
+   113
+  ],
+  "art_size": [
+   16,
+   15
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 4
+ },
+ {
+  "file": "bamboo_fence.png",
+  "source": "props_b_1x.png",
+  "pos": [
+   0,
+   114
+  ],
+  "art_size": [
+   16,
+   14
+  ],
+  "texture_size": [
+   16,
+   16
+  ],
+  "colours": 6
+ }
+]
