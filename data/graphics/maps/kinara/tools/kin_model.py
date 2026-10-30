@@ -34,47 +34,106 @@ def face(name,png,verts,uvs,n):
     if name not in matidx: matidx[name]=len(mats); mats.append((name,png,[]))
     vi=[addv(v) for v in verts]; ti=[addt(t) for t in uvs]
     mats[matidx[name]][2].append(' '.join(f'{a}/{b}/{n}' for a,b in zip(vi,ti)))
-# ---- ground (fuzzy-deduped cells)
-def dist(A,b):
-    d=np.abs(A-b).reshape(len(A),256,3).sum(2)
-    big=(d>45).sum(1)
-    return np.where(big<=2, d.mean(1)/14.0, 10+d.mean(1))
-cellk={}
-for r in range(32):
-  for c in range(32):
-    cellk.setdefault(g[r*16:r*16+16,c*16:c*16+16].tobytes(),[]).append((r,c))
+# ---- ground: pure areas -> 2x2 "family" textures in world space, edges/details -> unique cells
+from scipy.cluster.vq import kmeans2
 import glob
 TB={os.path.basename(f)[5:7]:np.asarray(Image.open(f).convert('RGB')).astype(np.int32) for f in sorted(glob.glob('out/ground/tile_*.png'))}
 TB={k:v for k,v in TB.items() if v.shape==(16,16,3)}
-tn=list(TB); TA=np.array([TB[n] for n in tn])
-uniq={}; recon=np.zeros_like(g); rest=[]
+gi=g.astype(np.int32)
+px=gi.reshape(-1,3).astype(float); cent,_=kmeans2(px[::5],9,minit='++',seed=7)
+lab=np.argmin(((gi.reshape(-1,1,3)-cent[None])**2).sum(-1),1).reshape(512,512)
+# merge clusters that are the same material (e.g. grass light/dark speckle): group by cell co-occurrence
+cells={(r,c):gi[r*16:r*16+16,c*16:c*16+16] for r in range(32) for c in range(32)}
+cellmean={k:v.reshape(-1,3).mean(0) for k,v in cells.items()}
+# material = cluster of cell means (cells, not pixels, so speckle stays inside one material)
+cm=np.array([cellmean[(r,c)] for r in range(32) for c in range(32)])
+mc,ml=kmeans2(cm,8,minit='++',seed=11); ml=ml.reshape(32,32)
+uniq={}; recon=np.zeros_like(g); GRID={}
 def put(nm,img,r,c):
     if nm not in uniq: uniq[nm]=1; quant(img).save(f'{OUT}/{nm}.png')
-    recon[r*16:r*16+16,c*16:c*16+16]=img
-    x0=c-16; y0=(31-r)-16
-    face(nm,nm+'.png',[(x0,y0,0),(x0+1,y0,0),(x0+1,y0+1,0),(x0,y0+1,0)],[(0,0),(1,0),(1,1),(0,1)],NUP)
-cand=[]
-best={}
-for r in range(32):
-  for c in range(32):
-    cell=g[r*16:r*16+16,c*16:c*16+16].astype(np.int32)
-    d=np.abs(TA-cell).sum(3).mean((1,2)); j=int(d.argmin()); best[(r,c)]=j
-    cand.append((d[j],r,c,cell))
-cand.sort(key=lambda x:-x[0])
-MAXU=int(os.environ.get('MAXU','40')); E=float(os.environ.get('ERR','14'))
-uniqcells=[]; assign={}
-for e,r,c,cell in cand:
-    if e<E: break
-    flat=cell.reshape(-1)
-    hit=None
-    for k,u in enumerate(uniqcells):
-        if np.abs(u-flat).mean()<4: hit=k; break
-    if hit is None and len(uniqcells)<MAXU: uniqcells.append(flat); hit=len(uniqcells)-1
-    if hit is not None: assign[(r,c)]=hit
-for r in range(32):
-  for c in range(32):
-    if (r,c) in assign: k=assign[(r,c)]; put(f'kg{k:03d}',uniqcells[k].reshape(16,16,3),r,c)
-    else: j=best[(r,c)]; put('kt'+tn[j],TA[j],r,c)
+    recon[r*16:r*16+16,c*16:c*16+16]=img; GRID[(r,c)]=nm
+def cdist(a,b): return np.abs(a-b).mean()
+# a cell is "plain" if it is close to the typical cells of its material
+assigned={}
+for mi in range(8):
+    ks=[(r,c) for r in range(32) for c in range(32) if ml[r,c]==mi]
+    if len(ks)<12: continue
+    # medoid-ish representatives: the 4 cells with the lowest mean distance to 30 random members
+    rng=np.random.default_rng(mi); sample=[ks[i] for i in rng.choice(len(ks),min(30,len(ks)),replace=False)]
+    score={k:np.mean([cdist(cells[k],cells[s]) for s in sample]) for k in ks}
+    best=sorted(ks,key=lambda k:score[k])
+    base=score[best[0]]
+    fn=f'kf{mi:02d}'
+    labs=np.concatenate([lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16].ravel() for k in ks])
+    share=np.bincount(labs,minlength=9)/len(labs); dom=set(np.where(share>=0.08)[0])
+    def purity(k): return np.isin(lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16],list(dom)).mean()
+    plain=[k for k in ks if purity(k)>=0.995 and score[k]<base*1.5+3]
+    if len(plain)<8: continue
+    best=[k for k in best if k in set(plain)]
+    half=best[:max(4,len(best)//2)]
+    def unif(k):
+        lk=lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]; cnt=np.bincount(lk.ravel(),minlength=9)
+        rare=(cnt>0)&(cnt<12)   # labels that only appear as a few stray pixels (lines, dots)
+        return rare.sum()*100+cells[k].sum(2).std()
+    best=sorted(half,key=unif)
+    reps=[]
+    for k in best:
+        if all(cdist(cells[k],cells[q])>3 for q in reps): reps.append(k)
+        if len(reps)==4: break
+    while len(reps)<4: reps.append(reps[0])
+    comp=np.zeros((32,32,3),np.int32)
+    for j,q in enumerate(reps): comp[(j//2)*16:(j//2)*16+16,(j%2)*16:(j%2)*16+16]=cells[q]
+    quant(comp).save(f'{OUT}/{fn}.png'); uniq[fn]=1
+    for k in plain:
+        assigned[k]=fn; recon[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]=comp[(k[0]%2)*16:(k[0]%2)*16+16,(k[1]%2)*16:(k[1]%2)*16+16]
+        GRID[k]=fn
+rest=[k for k in cells if k not in assigned]
+print('plain cells',len(assigned),'detail cells',len(rest))
+MAXU=int(os.environ.get('MAXU','130'))
+U=[]; UL=[]
+for k in sorted(rest,key=lambda k:-np.abs(cells[k]-cells[k].mean((0,1))).mean()):
+    lk=lab[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]
+    hit=[i for i,u in enumerate(U) if cdist(u,cells[k])<9 and (UL[i]!=lk).sum()<=4]
+    if not hit and len(U)<MAXU: U.append(cells[k]); UL.append(lk); hit=[len(U)-1]
+    if not hit: hit=[int(np.argmin([cdist(u,cells[k]) for u in U]))]
+    recon[k[0]*16:k[0]*16+16,k[1]*16:k[1]*16+16]=U[hit[0]]; GRID[k]=('kg',hit[0])
+# pack the detail cells into 64x64 atlases (16 cells each), grouping cells with similar colours
+order=sorted(range(len(U)),key=lambda i:tuple((U[i].reshape(-1,3).mean(0)//24).astype(int)))
+SLOT={}
+for n in range(0,len(order),16):
+    grp=order[n:n+16]; atl=np.zeros((64,64,3),np.int32)
+    for j,i in enumerate(grp):
+        sx,sy=j%4,j//4; atl[sy*16:sy*16+16,sx*16:sx*16+16]=U[i]; SLOT[i]=(f'ka{n//16:02d}',sx,sy)
+    if len(grp)<16:
+        for j in range(len(grp),16): sx,sy=j%4,j//4; atl[sy*16:sy*16+16,sx*16:sx*16+16]=U[grp[0]]
+    nm=f'ka{n//16:02d}'; quant(atl).save(f'{OUT}/{nm}.png'); uniq[nm]=1
+def flush_ground():
+    done=set()
+    for r in range(32):
+        for c in range(32):
+            if (r,c) in done: continue
+            nm=GRID[(r,c)]
+            if isinstance(nm,tuple):
+                an,sx,sy=SLOT[nm[1]]; done.add((r,c)); x0=c-16; y0=(31-r)-16
+                u0=sx/4; u1=(sx+1)/4; v1=1-sy/4; v0=1-(sy+1)/4
+                face(an,an+'.png',[(x0,y0,0),(x0+1,y0,0),(x0+1,y0+1,0),(x0,y0+1,0)],[(u0,v0),(u1,v0),(u1,v1),(u0,v1)],NUP)
+                continue
+            w=1
+            while c+w<32 and (r,c+w) not in done and GRID[(r,c+w)]==nm: w+=1
+            h=1
+            while r+h<32 and all((r+h,c+k) not in done and GRID[(r+h,c+k)]==nm for k in range(w)): h+=1
+            for i in range(h):
+                for k in range(w): done.add((r+i,c+k))
+            x0=c-16; y0=(31-(r+h-1))-16
+            if nm.startswith('kf'):
+                # world-aligned: texture row 0 (top) = even map rows, col 0 = even map cols
+                u0=c/2; u1=(c+w)/2
+                v1=(64-r)/2; v0=(64-(r+h))/2   # v grows northwards; even rows sit in the top half
+                uv=[(u0,v0),(u1,v0),(u1,v1),(u0,v1)]
+            else:
+                uv=[(0,0),(w,0),(w,h),(0,h)]
+            face(nm,nm+'.png',[(x0,y0,0),(x0+w,y0,0),(x0+w,y0+h,0),(x0,y0+h,0)],uv,NUP)
+flush_ground()
 Image.fromarray(recon).save('ground_final.png')
 print('ground textures',len(uniq))
 # ---- objects

@@ -1,250 +1,50 @@
-newmtl kt25
+newmtl ka07
 Kd 1 1 1
-map_Kd kt25.png
+map_Kd ka07.png
 
-newmtl kt26
+newmtl ka05
 Kd 1 1 1
-map_Kd kt26.png
+map_Kd ka05.png
 
-newmtl kt27
+newmtl ka06
 Kd 1 1 1
-map_Kd kt27.png
+map_Kd ka06.png
 
-newmtl kt12
+newmtl kf01
 Kd 1 1 1
-map_Kd kt12.png
+map_Kd kf01.png
 
-newmtl kt10
+newmtl ka01
 Kd 1 1 1
-map_Kd kt10.png
+map_Kd ka01.png
 
-newmtl kt11
+newmtl kf03
 Kd 1 1 1
-map_Kd kt11.png
+map_Kd kf03.png
 
-newmtl kg021
+newmtl kf00
 Kd 1 1 1
-map_Kd kg021.png
+map_Kd kf00.png
 
-newmtl kt13
+newmtl ka00
 Kd 1 1 1
-map_Kd kt13.png
+map_Kd ka00.png
 
-newmtl kt14
+newmtl kf02
 Kd 1 1 1
-map_Kd kt14.png
+map_Kd kf02.png
 
-newmtl kt15
+newmtl ka03
 Kd 1 1 1
-map_Kd kt15.png
+map_Kd ka03.png
 
-newmtl kt20
+newmtl ka02
 Kd 1 1 1
-map_Kd kt20.png
+map_Kd ka02.png
 
-newmtl kt21
+newmtl ka04
 Kd 1 1 1
-map_Kd kt21.png
-
-newmtl kt22
-Kd 1 1 1
-map_Kd kt22.png
-
-newmtl kg032
-Kd 1 1 1
-map_Kd kg032.png
-
-newmtl kg009
-Kd 1 1 1
-map_Kd kg009.png
-
-newmtl kg019
-Kd 1 1 1
-map_Kd kg019.png
-
-newmtl kg029
-Kd 1 1 1
-map_Kd kg029.png
-
-newmtl kg028
-Kd 1 1 1
-map_Kd kg028.png
-
-newmtl kg031
-Kd 1 1 1
-map_Kd kg031.png
-
-newmtl kg024
-Kd 1 1 1
-map_Kd kg024.png
-
-newmtl kt16
-Kd 1 1 1
-map_Kd kt16.png
-
-newmtl kg013
-Kd 1 1 1
-map_Kd kg013.png
-
-newmtl kt17
-Kd 1 1 1
-map_Kd kt17.png
-
-newmtl kg026
-Kd 1 1 1
-map_Kd kg026.png
-
-newmtl kg020
-Kd 1 1 1
-map_Kd kg020.png
-
-newmtl kg036
-Kd 1 1 1
-map_Kd kg036.png
-
-newmtl kg017
-Kd 1 1 1
-map_Kd kg017.png
-
-newmtl kg014
-Kd 1 1 1
-map_Kd kg014.png
-
-newmtl kg010
-Kd 1 1 1
-map_Kd kg010.png
-
-newmtl kg007
-Kd 1 1 1
-map_Kd kg007.png
-
-newmtl kt41
-Kd 1 1 1
-map_Kd kt41.png
-
-newmtl kg006
-Kd 1 1 1
-map_Kd kg006.png
-
-newmtl kg012
-Kd 1 1 1
-map_Kd kg012.png
-
-newmtl kg005
-Kd 1 1 1
-map_Kd kg005.png
-
-newmtl kg034
-Kd 1 1 1
-map_Kd kg034.png
-
-newmtl kg016
-Kd 1 1 1
-map_Kd kg016.png
-
-newmtl kg018
-Kd 1 1 1
-map_Kd kg018.png
-
-newmtl kg022
-Kd 1 1 1
-map_Kd kg022.png
-
-newmtl kg015
-Kd 1 1 1
-map_Kd kg015.png
-
-newmtl kt03
-Kd 1 1 1
-map_Kd kt03.png
-
-newmtl kg035
-Kd 1 1 1
-map_Kd kg035.png
-
-newmtl kt02
-Kd 1 1 1
-map_Kd kt02.png
-
-newmtl kt00
-Kd 1 1 1
-map_Kd kt00.png
-
-newmtl kt01
-Kd 1 1 1
-map_Kd kt01.png
-
-newmtl kg004
-Kd 1 1 1
-map_Kd kg004.png
-
-newmtl kg023
-Kd 1 1 1
-map_Kd kg023.png
-
-newmtl kg001
-Kd 1 1 1
-map_Kd kg001.png
-
-newmtl kt05
-Kd 1 1 1
-map_Kd kt05.png
-
-newmtl kg003
-Kd 1 1 1
-map_Kd kg003.png
-
-newmtl kg002
-Kd 1 1 1
-map_Kd kg002.png
-
-newmtl kg000
-Kd 1 1 1
-map_Kd kg000.png
-
-newmtl kg008
-Kd 1 1 1
-map_Kd kg008.png
-
-newmtl kg033
-Kd 1 1 1
-map_Kd kg033.png
-
-newmtl kg037
-Kd 1 1 1
-map_Kd kg037.png
-
-newmtl kg011
-Kd 1 1 1
-map_Kd kg011.png
-
-newmtl kg030
-Kd 1 1 1
-map_Kd kg030.png
-
-newmtl kt36
-Kd 1 1 1
-map_Kd kt36.png
-
-newmtl kt40
-Kd 1 1 1
-map_Kd kt40.png
-
-newmtl kg039
-Kd 1 1 1
-map_Kd kg039.png
-
-newmtl kg025
-Kd 1 1 1
-map_Kd kg025.png
-
-newmtl kg038
-Kd 1 1 1
-map_Kd kg038.png
-
-newmtl kg027
-Kd 1 1 1
-map_Kd kg027.png
+map_Kd ka04.png
 
 newmtl k_palmdry
 Kd 1 1 1

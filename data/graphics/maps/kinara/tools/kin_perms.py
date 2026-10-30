@@ -21,7 +21,7 @@ for r,c in [(10,0),(10,1),(10,2),(11,0),(11,1),(11,2),(12,0),(12,1),(12,2),(29,1
 pad=np.zeros((512,512),bool); pad[160:208,0:48]=True; pad[464:496,288:320]=True
 for r in range(32):
   for c in range(32):
-    if pad[r*16:r*16+16,c*16:c*16+16].mean()>0.5: typ[r,c]=0x02
+    pass  # paddy stays plain ground (no tall-grass rustle in town)
 small={'coconut_palm_healthy','coconut_palm_drought','banana_plant','hibiscus_bush','marigold_pot','signpost','helion_pump','water_level_marker','well','laterite_wall_corner','bamboo_fence_corner'}
 wide={'banyan_shrine':2,'houseboat_stranded':2,'canoe':1,'clothesline':1,'chinese_fishing_net':1,'bamboo_fence':1}
 for p in hits:

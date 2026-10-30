@@ -79,8 +79,8 @@ _00A4:
 	show_person obj_T20_var_1
 	clearflag FLAG_HIDE_NEW_BARK_MARILL
 	show_person obj_T20_follower_mon_static_marill
-	move_person_facing obj_T20_var_1, 686, 0, 396, DIR_WEST
-	move_person_facing obj_T20_follower_mon_static_marill, 685, 0, 396, DIR_SOUTH
+	move_person_facing obj_T20_var_1, 699, 0, 398, DIR_WEST
+	move_person_facing obj_T20_follower_mon_static_marill, 698, 0, 398, DIR_SOUTH
 	end
 
 scr_seq_T20_000:
@@ -508,11 +508,11 @@ _0743:
 	end
 
 _075A:
-	scrcmd_307 21, 12, 12, 9, 77
+	scrcmd_307 21, 12, 25, 11, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	show_person obj_T20_doctor
-	move_person_facing obj_T20_doctor, 684, 0, 393, DIR_SOUTH
+	move_person_facing obj_T20_doctor, 697, 0, 395, DIR_SOUTH
 	apply_movement obj_T20_doctor, _0D08
 	wait_movement
 	scrcmd_311 77
@@ -624,7 +624,7 @@ _096C:
 	apply_movement obj_T20_doctor, _0D70
 _0981:
 	wait_movement
-	scrcmd_307 21, 12, 12, 9, 77
+	scrcmd_307 21, 12, 25, 11, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	apply_movement obj_T20_doctor, _0D10
@@ -972,51 +972,38 @@ _0C8C:
 	step_end
 	.balign 4
 _0C98:
-
-	step 13, 3
-	step 14, 8
+	step 13, 1
+	step 14, 24
 	step 32, 1
 	step_end
 	.balign 4
 _0CA8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 33, 1
 	step_end
 	.balign 4
 _0CB8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 13, 1
 	step_end
 	.balign 4
 _0CC8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 13, 2
 	step_end
 	.balign 4
 _0CD8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 13, 3
 	step_end
 	.balign 4
 _0CE8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 13, 4
 	step_end
 	.balign 4
 _0CF8:
-
-	step 13, 2
-	step 14, 8
+	step 14, 24
 	step 13, 5
 	step_end
 	.balign 4
@@ -1031,50 +1018,39 @@ _0D10:
 	step_end
 	.balign 4
 _0D18:
-
-	step 15, 8
-	step 12, 3
+	step 15, 24
+	step 12, 1
 	step_end
 	.balign 4
 _0D24:
-
-	step 15, 8
-	step 12, 2
+	step 15, 24
 	step_end
 	.balign 4
 _0D30:
-
 	step 12, 1
-	step 15, 8
-	step 12, 2
+	step 15, 24
 	step_end
 	.balign 4
 _0D40:
-
 	step 12, 2
-	step 15, 8
-	step 12, 2
+	step 15, 24
 	step_end
 	.balign 4
 _0D50:
-
 	step 12, 2
-	step 15, 8
-	step 12, 3
+	step 15, 24
+	step 12, 1
 	step_end
 	.balign 4
 _0D60:
-
 	step 12, 2
-	step 15, 8
-	step 12, 4
+	step 15, 24
+	step 12, 2
 	step_end
 	.balign 4
 _0D70:
-
 	step 12, 5
-	step 15, 8
-	step 12, 2
+	step 15, 24
 	step_end
 scr_seq_T20_003:
 	scrcmd_609
@@ -1117,9 +1093,9 @@ _0E08:
 	step 71, 1
 	step 53, 1
 	step 72, 1
-	step 3, 5
-	step 0, 5
 	step 2, 5
+	step 0, 5
+	step 3, 5
 	step 0, 5
 	step 12, 1
 	step 66, 1
@@ -1127,58 +1103,57 @@ _0E08:
 	.balign 4
 _0E38:
 
-	step 2, 1
+	step 3, 1
 	step 75, 1
 	step 36, 4
 	step 1, 2
-	step 3, 2
-	step 0, 2
 	step 2, 2
-	step 38, 4
-	step 18, 6
+	step 0, 2
+	step 3, 2
+	step 39, 4
+	step 19, 6
 	step_end
 	.balign 4
 _0E60:
 
-	step 50, 4
+	step 51, 4
 	step_end
 	.balign 4
 _0E68:
 
-	step 2, 1
-	step 14, 1
+	step 3, 1
+	step 15, 1
 	step 1, 1
 	step 13, 4
-	step 2, 1
-	step 14, 2
+	step 3, 1
+	step 15, 2
 	step_end
 	.byte 0x01, 0x00, 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x01, 0x00
 	.byte 0x02, 0x00, 0x01, 0x00, 0x0e, 0x00, 0x06, 0x00, 0xfe, 0x00, 0x00, 0x00
 	.balign 4
 _0E9C:
 
-	step 2, 4
+	step 3, 4
 	step_end
 	.balign 4
 _0EA4:
-
 	step 65, 1
-	step 13, 6
-	step 3, 1
+	step 13, 2
+	step 2, 1
 	step 75, 1
 	step_end
 	.balign 4
 _0EB8:
 
-	step 39, 4
+	step 38, 4
 	step_end
 	.balign 4
 _0EC0:
 
 	step 1, 1
 	step 13, 4
-	step 2, 1
-	step 14, 2
+	step 3, 1
+	step 15, 2
 	step_end
 scr_seq_T20_007:
 	buffer_players_name 0
@@ -1320,7 +1295,7 @@ _1078:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	wait_se SEQ_SE_DP_KAIDAN2
-	scrcmd_582 MAP_T20, 688, 393
+	scrcmd_582 MAP_T20, 699, 396
 	setvar VAR_UNK_407C, 1
 	end
 
@@ -1470,7 +1445,7 @@ scr_seq_T20_011:
 	lockall
 	compare VAR_TEMP_x4007, 2
 	goto_if_eq _144F
-	scrcmd_307 21, 12, 23, 12, 77
+	scrcmd_307 21, 12, 11, 11, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	play_se SEQ_SE_DP_KAIDAN2
@@ -1492,28 +1467,28 @@ _12F1:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8005, 398
+	compare VAR_SPECIAL_x8005, 397
 	goto_if_ne _132D
 	apply_movement obj_T20_gsmama, _1480
 	apply_movement obj_player, _14A4
 	goto _13A6
 
 _132D:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _1350
 	apply_movement obj_T20_gsmama, _148C
 	apply_movement obj_player, _14B0
 	goto _13A6
 
 _1350:
-	compare VAR_SPECIAL_x8005, 400
+	compare VAR_SPECIAL_x8005, 399
 	goto_if_ne _1373
 	apply_movement obj_T20_gsmama, _1498
 	apply_movement obj_player, _14BC
 	goto _13A6
 
 _1373:
-	compare VAR_SPECIAL_x8005, 401
+	compare VAR_SPECIAL_x8005, 400
 	goto_if_ne _1396
 	apply_movement obj_T20_gsmama, _1498
 	apply_movement obj_player, _14C8
@@ -1536,14 +1511,14 @@ _13C8:
 	npc_msg 23
 _13CB:
 	closemsg
-	compare VAR_SPECIAL_x8005, 398
+	compare VAR_SPECIAL_x8005, 397
 	goto_if_ne _13EA
 	apply_movement obj_T20_gsmama, _14E8
 	wait_movement
 	goto _1411
 
 _13EA:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _1407
 	apply_movement obj_T20_gsmama, _14F0
 	wait_movement
@@ -1553,7 +1528,7 @@ _1407:
 	apply_movement obj_T20_gsmama, _14F8
 	wait_movement
 _1411:
-	scrcmd_307 21, 12, 23, 12, 77
+	scrcmd_307 21, 12, 11, 11, 77
 	scrcmd_310 77
 	scrcmd_308 77
 	apply_movement obj_T20_gsmama, _1500
@@ -1593,51 +1568,51 @@ _1478:
 _1480:
 
 	step 13, 1
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _148C:
 
 	step 13, 2
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _1498:
 
 	step 13, 3
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _14A4:
 
-	step 34, 1
-	step 14, 4
+	step 35, 1
+	step 15, 4
 	step_end
 	.balign 4
 _14B0:
 
-	step 34, 1
-	step 14, 4
+	step 35, 1
+	step 15, 4
 	step_end
 	.balign 4
 _14BC:
 
-	step 34, 1
-	step 14, 4
+	step 35, 1
+	step 15, 4
 	step_end
 	.balign 4
 _14C8:
 
-	step 14, 2
+	step 15, 2
 	step 12, 1
-	step 14, 2
+	step 15, 2
 	step_end
 	.balign 4
 _14D8:
 
-	step 14, 2
+	step 15, 2
 	step 12, 2
-	step 14, 2
+	step 15, 2
 	step_end
 	.balign 4
 _14E8:
@@ -1662,7 +1637,7 @@ _1500:
 	.balign 4
 _1508:
 
-	step 14, 1
+	step 15, 1
 	step_end
 scr_seq_T20_012:
 	scrcmd_609
@@ -1676,25 +1651,25 @@ scr_seq_T20_012:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8005, 398
+	compare VAR_SPECIAL_x8005, 397
 	goto_if_ne _1552
 	apply_movement obj_T20_var_1_2, _1650
 	goto _15AB
 
 _1552:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _156D
 	apply_movement obj_T20_var_1_2, _1658
 	goto _15AB
 
 _156D:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _1588
 	apply_movement obj_T20_var_1_2, _1660
 	goto _15AB
 
 _1588:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _15A3
 	apply_movement obj_T20_var_1_2, _1668
 	goto _15AB
@@ -1710,25 +1685,25 @@ _15AB:
 	buffer_players_name 0
 	gender_msgbox 29, 30
 	closemsg
-	compare VAR_SPECIAL_x8005, 398
+	compare VAR_SPECIAL_x8005, 397
 	goto_if_ne _15E3
 	apply_movement obj_T20_var_1_2, _1680
 	goto _163C
 
 _15E3:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _15FE
 	apply_movement obj_T20_var_1_2, _1688
 	goto _163C
 
 _15FE:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _1619
 	apply_movement obj_T20_var_1_2, _1690
 	goto _163C
 
 _1619:
-	compare VAR_SPECIAL_x8005, 399
+	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _1634
 	apply_movement obj_T20_var_1_2, _1698
 	goto _163C
@@ -1744,63 +1719,63 @@ _163C:
 	.balign 4
 _1644:
 
-	step 3, 1
+	step 2, 1
 	step 75, 1
 	step_end
 	.balign 4
 _1650:
 
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _1658:
 
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _1660:
 
-	step 15, 1
+	step 14, 1
 	step_end
 	.balign 4
 _1668:
 
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _1670:
 
-	step 35, 1
+	step 34, 1
 	step_end
 	.balign 4
 _1678:
 
-	step 14, 2
+	step 15, 2
 	step_end
 	.balign 4
 _1680:
 
-	step 34, 1
+	step 35, 1
 	step_end
 	.balign 4
 _1688:
 
-	step 34, 1
+	step 35, 1
 	step_end
 	.balign 4
 _1690:
 
-	step 34, 1
+	step 35, 1
 	step_end
 	.balign 4
 _1698:
 
-	step 34, 1
+	step 35, 1
 	step_end
 	.balign 4
 _16A0:
 
-	step 34, 1
+	step 35, 1
 	step_end
 scr_seq_T20_004:
 	play_se SEQ_SE_DP_SELECT

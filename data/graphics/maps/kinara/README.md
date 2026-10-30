@@ -22,7 +22,9 @@ Notes
 
 - `model/` — Kinara map source: `kinara.obj/.mtl` + textures (PDSMS conventions, 1 unit per tile, z up, ground at height 1),
   `kinara.imd` (map, via PDSMS `ImdModel`) and `texset_kinara.imd` (HGSS map texture set 2 + the Kinara textures).
-- Ground is the mockup with props/buildings lifted out and inpainted; cells that match a DS-ready tile use it, the rest are unique 16x16 cells.
+- Ground is the mockup with props/buildings lifted out and inpainted. Plain areas (grass, road, sand, dry earth, water, fields) use 32x32 repeating
+  textures merged into large quads; edges and details are packed into 64x64 atlases. Keep the map NSBMD small: vanilla HGSS maps stay under ~61 KB,
+  and a 65 KB Kinara model corrupted the map geometry after re-entering the town.
 - Props and buildings are camera-facing quads leaning back ~50° (HGSS tree calibration), cut from the mockup art.
 - `g3dcvtr kinara.imd -emdl` -> `kinara.nsbmd`; `g3dcvtr texset_kinara.imd -etex` -> `texset_kinara.nsbtx`.
 - `rawdata/maps/land_data/5_000` = New Bark's map slot (land_data 0): Kinara permissions + model + flat BDHC (height 16, from Route 29) + New Bark's BGS.
